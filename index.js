@@ -49,7 +49,7 @@ async function run() {
         await client.connect();
         const database = client.db('SyedBabyCare');
         const productCollection = database.collection('products3');
-        const reviewsCollection = database.collection('reviews');
+        const reviewsCollection = database.collection('reviews3');
         const ordersCollection = database.collection('orders');
         const usersCollection = database.collection('users');
         const blogsCollection = database.collection('blogs');
@@ -182,7 +182,7 @@ async function run() {
             res.send(products);
         });
         // POST reviews API 
-        app.post('/reviews', async (req, res) => {
+        app.post('/reviews3', async (req, res) => {
             const reviews = req.body;
             console.log('hit', reviews);
             const result = await reviewsCollection.insertOne(reviews);
@@ -190,7 +190,7 @@ async function run() {
             res.json(result);
         });
         // GET Reviews API 
-        app.get('/reviews', async (req, res) => {
+        app.get('/reviews3', async (req, res) => {
             const cursor = reviewsCollection.find({});
             const reviews = await cursor.toArray();
             res.send(reviews);
